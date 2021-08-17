@@ -23,19 +23,16 @@ public class CameraSystem : MonoBehaviour
     private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, player.transform.position + offset, moveSpeed * Time.deltaTime);
-
         Zoom();
     }
 
     private void Zoom()
     {
-
         if(Mathf.Abs(cam.orthographicSize - _camSize) > 0.05)
         {
             float change = Mathf.Lerp(cam.orthographicSize, _camSize, Time.deltaTime * 2);
             cam.orthographicSize = change;
-        }
-        
+        }   
         if(Input.mouseScrollDelta.y > 0 && _camSize > minSize)
         {
             _camSize -= 1;
@@ -45,5 +42,4 @@ public class CameraSystem : MonoBehaviour
             _camSize += 1;
         }
     }
-
 }
